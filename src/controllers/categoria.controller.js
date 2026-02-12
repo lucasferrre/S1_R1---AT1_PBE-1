@@ -19,20 +19,15 @@ const categoriaController = {
 
      criarCategoria: async (req, res) => {
         try {
-            const { idCategoria, nomeProduto, valorProduto} = req.body;
+            const { DescricaoCategoria } = req.body;
 
-            const idCategoriaNum = parseInt(idCategoria);
-            const valorProdutoNum = parseFloat(valorProduto);
-            
-            const vinculoImagem = req.file.filename;
-
-            if (!idCategoriaNum || isNaN(idCategoriaNum)|| !nomeProduto || !valorProdutoNum || isNaN(valorProdutoNum) || !vinculoImagem ) {
+            if (!DescricaoCategoria) {
                 return res.status(400).json({
                     message: "Preencha todos os campos obrigatórios"
                 });
             }
 
-            const result = await produtoModel.insert(nomeProduto, idCategoriaNum, valorProdutoNum, vinculoImagem);
+            const result = await categoriaModel.insert(DescricaoCategoria);
 
             res.status(201).json({
                 message: "Produto cadastrado com sucesso!",resultado: result});
@@ -47,16 +42,10 @@ const categoriaController = {
     atualizarCategoria: async (req, res) => {
         try {
 
-            const { idProduto } = req.params;
-            const { idCategoria, nomeProduto, valorProduto } = req.body;
+            const { idCategoria } = req.params;
+            const { DescricaoCategoria } = req.body;
 
-            const idCategoriaNum = parseInt(idCategoria);
-            const valorProdutoNum = parseFloat(valorProduto);
-
-            const vinculoImagem = req.file.filename;
-
-
-            const result = await produtoModel.update(nomeProduto, idCategoriaNum, valorProdutoNum, vinculoImagem, idProduto);
+            const result = await categoriaModel.update(DescricaoCategoria, idCategoria);
 
             res.status(200).json({message: "Produto atualizado com sucesso!",result});
 

@@ -5,7 +5,7 @@ import uploadImage from "../middlewares/uploadImage.middleware.js";
 const categoriaRoutes = Router();
 
 categoriaRoutes.get("/categorias", categoriaController.SelecionarTodos);
-categoriaRoutes.post("/categorias/:idCategoria", uploadImage, categoriaController.atualizarCategoria )
-categoriaRoutes.put("/categorias/:idCategoria", uploadImage, categoriaController)
+categoriaRoutes.post("/categorias", uploadImage, categoriaController.criarCategoria)
+categoriaRoutes.put("/categorias/:idCategoria", uploadImage, categoriaController.atualizarCategoria)
 
 export default categoriaRoutes;
