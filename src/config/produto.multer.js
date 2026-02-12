@@ -12,7 +12,7 @@ const verifyDir = (dir) => {
 }
 
 const createMulter = ({folder, allowedTypes, fileSize}) => {
-    // Monta caminho do diretorio base + pasta
+
     const uploadDir = path.join(baseUploadDir, folder);
     verifyDir(uploadDir);
 
