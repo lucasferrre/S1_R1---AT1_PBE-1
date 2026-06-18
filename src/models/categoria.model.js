@@ -1,17 +1,17 @@
-import conn from "../config/db.js";
+import {connectionection} from "../config/db.js";
 
 const categoriaModel = {
 
     selectALL: async () => {
         const sql = "select * from categorias;";
-        const [rows] = await conn.execute(sql)
+        const [rows] = await connection.execute(sql)
         return rows;
     },
 
     insert: async (pDescricaoCategoria) => {
         const sql = "insert into categorias (descricaoCategoria) values(?);";
         const values = [pDescricaoCategoria];
-        const [rows] = await conn.execute(sql, values)
+        const [rows] = await connection.execute(sql, values)
         return rows;
     },
     
@@ -22,7 +22,7 @@ const categoriaModel = {
         descricaoCategoria = ? 
         WHERE idCategoria = ?;`;
         const values = [pDescricaoCategoria, pIdCategoria ];
-        const [rows] = await conn.execute(sql, values)
+        const [rows] = await connection.execute(sql, values)
         return rows;
     },
 
@@ -30,7 +30,7 @@ const categoriaModel = {
         delete: async (pIdCategoria) => {
             const sql = `DELETE FROM categorias WHERE idCategoria = ?;`;
             const values = [pIdCategoria];
-            const [rows] = await conn.execute(sql, values);
+            const [rows] = await connection.execute(sql, values);
             return rows;
         }
 
