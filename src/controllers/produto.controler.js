@@ -66,14 +66,38 @@ const produtoController = {
         };
     },
 
-    deletarProduto: async (req, res) => {
-            try {
+   deletarProduto: async (req, res) => {
+        try {
 
             const { idProduto } = req.params;
+            
+            const produtoExistente = await produtoModel.selectById(idProduto);
+
+            if (!produtoExistente) {
+                return res.status(404).json({
+                    message: "Produto não encontrado"
+                });
+            }
 
             const result = await produtoModel.delete(idProduto);
 
-            res.status(200).json({message: "Produto excluído com sucesso!",result});
+            if (result.affectedRows > 0 && produtoExistente.imagemProduto) {
+
+                const caminhoImagem = path.resolve(
+                    "uploads",
+                    produtoExistente.imagemProduto
+                );
+
+                if (fs.existsSync(caminhoImagem)) {
+                    fs.unlinkSync(caminhoImagem);
+                }
+            }
+
+            res.status(200).json({
+                message: "Produto excluído com sucesso!",
+                result
+            });
+
             
             } catch (error) {
             console.error(error)

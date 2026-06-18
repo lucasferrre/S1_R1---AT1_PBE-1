@@ -26,8 +26,16 @@ const categoriaModel = {
         return rows;
     },
 
+    
+        delete: async (pIdCategoria) => {
+            const sql = `DELETE FROM categorias WHERE idCategoria = ?;`;
+            const values = [pIdCategoria];
+            const [rows] = await conn.execute(sql, values);
+            return rows;
+        }
+
+
 
 }
 
 export default categoriaModel;
-

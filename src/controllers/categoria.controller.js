@@ -55,6 +55,22 @@ const categoriaController = {
         };
     },
 
+    deletarProduto: async (req, res) => {
+            try {
+
+            const { idCategoria } = req.params;
+
+            const result = await categoriaModel(idProduto);
+
+            res.status(200).json({message: "Produto excluído com sucesso!",result});
+            
+            } catch (error) {
+            console.error(error)
+            res.status(500).json({ message: `Erro no servidor`, errorMessage: error.message });
+        };
+    }
+
+
 
 };
 
