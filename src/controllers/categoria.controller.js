@@ -19,15 +19,15 @@ const categoriaController = {
 
      criarCategoria: async (req, res) => {
         try {
-            const { DescricaoCategoria } = req.body;
+            const { descricaoCategoria } = req.body.descricaoCategoria;
 
-            if (!DescricaoCategoria) {
+            if (!descricaoCategoria) {
                 return res.status(400).json({
                     message: "Preencha todos os campos obrigatórios"
                 });
             }
 
-            const result = await categoriaModel.insert(DescricaoCategoria);
+            const result = await categoriaModel.insert(descricaoCategoria);
 
             res.status(201).json({
                 message: "Produto cadastrado com sucesso!",resultado: result});
