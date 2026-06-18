@@ -57,7 +57,7 @@ export async function initializeDatabase() {
 
 
         await tempConnection.query(`
-            create table if not exists Categorias(
+            create table if not exists categorias(
                 idCategoria int auto_increment primary key,
                 descricaoCategoria varchar (150) not null,
                 dataCad timestamp default current_timestamp
