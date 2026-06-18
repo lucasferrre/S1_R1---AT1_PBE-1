@@ -30,7 +30,7 @@ const categoriaController = {
             const result = await categoriaModel.insert(descricaoCategoria);
 
             res.status(201).json({
-                message: "Produto cadastrado com sucesso!",resultado: result});
+                message: "Categoria cadastrada com sucesso!",resultado: result});
 
         } catch (error) {
             console.error(error)
@@ -47,7 +47,7 @@ const categoriaController = {
 
             const result = await categoriaModel.update(DescricaoCategoria, idCategoria);
 
-            res.status(200).json({message: "Categoria atualizado com sucesso!",result});
+            res.status(200).json({message: "Categoria atualizada com sucesso!",result});
 
         } catch (error) {
             console.error(error)
