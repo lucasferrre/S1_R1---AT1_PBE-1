@@ -55,14 +55,14 @@ const categoriaController = {
         };
     },
 
-    deletarProduto: async (req, res) => {
+    deletarCategoria: async (req, res) => {
             try {
 
             const { idCategoria } = req.params;
 
-            const result = await categoriaModel(idProduto);
+            const result = await categoriaModel(idCategoria);
 
-            res.status(200).json({message: "Produto excluído com sucesso!",result});
+            res.status(200).json({message: "Categoria excluída com sucesso!",result});
             
             } catch (error) {
             console.error(error)

@@ -1,4 +1,4 @@
-import {connectionection} from "../config/db.js";
+import {connection} from "../config/db.js";
 
 const produtoModel = {
 
