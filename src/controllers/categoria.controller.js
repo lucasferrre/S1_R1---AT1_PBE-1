@@ -43,9 +43,9 @@ const categoriaController = {
         try {
 
             const { idCategoria } = req.params;
-            const { DescricaoCategoria } = req.body;
+            const { descricaoCategoria } = req.body;
 
-            const result = await categoriaModel.update(DescricaoCategoria, idCategoria);
+            const result = await categoriaModel.update(descricaoCategoria, idCategoria);
 
             res.status(200).json({message: "Categoria atualizada com sucesso!",result});
 
