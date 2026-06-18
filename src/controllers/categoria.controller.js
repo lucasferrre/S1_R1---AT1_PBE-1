@@ -47,7 +47,7 @@ const categoriaController = {
 
             const result = await categoriaModel.update(DescricaoCategoria, idCategoria);
 
-            res.status(200).json({message: "Produto atualizado com sucesso!",result});
+            res.status(200).json({message: "Categoria atualizado com sucesso!",result});
 
         } catch (error) {
             console.error(error)
