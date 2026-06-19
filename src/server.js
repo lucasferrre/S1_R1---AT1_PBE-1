@@ -6,6 +6,9 @@ import { initializeDatabase } from './config/db.js';
 const app = express();
 
 app.use(express.json());
+
+app.use('/Images', express.static('Images'));
+
 app.use('/', routes);
 
 // app.listen(process.env.SERVER_PORT, () => {
