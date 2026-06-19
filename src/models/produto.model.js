@@ -8,6 +8,13 @@ const produtoModel = {
         return rows;
     },
 
+        selectById: async (pIdProduto) => {
+        const sql = "select * from produtos where idProduto = ?;";
+        const values = [pIdProduto]
+        const [rows] = await connection.execute(sql, values)
+        return rows;
+    },
+
     insert: async (pNomeProduto, pIdCategoria, pvalorProduto, pvinculoImagem ) => {
         const sql = "insert into produtos (nomeProduto, idCategoria, valorProduto, vinculoImagem) values(?,?,?,?);";
         const values = [pNomeProduto, pIdCategoria, pvalorProduto, pvinculoImagem];
