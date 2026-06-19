@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/Images', express.static('Images'));
+app.use('/images', express.static('uploads/Images'));
 
 app.use('/', routes);
 
